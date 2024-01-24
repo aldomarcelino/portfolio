@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+// import Image from "next/image";
 
 type Props = {};
 
@@ -14,14 +15,14 @@ const About = (props: Props) => {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
-        src="https://images.unsplash.com/photo-1674223761195-76b75ac3490c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=470&q=80"
+        src="/assets/img/1674223687751.jpg"
         alt="aldo-marcelino"
-        className="-mb-10 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:w-64 md:h-95 xl:w-[400px] xl:h-[500px]"
+        className="mt-64 md:mt-0 mb-10 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:w-64 md:h-95 xl:w-[400px] xl:h-[500px]"
       />
-      <div className="space-y-8 px-0 md:px-10">
+      <div className="space-y-8 px-0 md:px-10 h-[500px]">
         <h4 className="text-4xl font-semibold">
           Here is a{" "}
-          <span className="underline decoration-[#F7AB0A]/50">little </span>
+          <span className="underline decoration-[#BB86FC]/80">little</span>{" "}
           background
         </h4>
         <p className="text-base">

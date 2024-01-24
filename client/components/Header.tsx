@@ -1,10 +1,13 @@
 import React from "react";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 type Props = {};
 
-const Header = (props: Props) => {
+const Header = ({}: Props) => {
+  const router = useRouter();
+
   return (
     <header className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
       <motion.div
@@ -36,6 +39,7 @@ const Header = (props: Props) => {
         animate={{ x: 0, opacity: 1, scale: 1 }}
         transition={{ duration: 1.5 }}
         className="flex flex-row items-center text-gray-300 cursor-pointer"
+        onClick={() => router.push("/#contact")}
       >
         <SocialIcon
           className="cursor-pointer"
