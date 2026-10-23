@@ -37,7 +37,7 @@ export function HeroHeadline() {
     <div className="hero-headline entrance delay-one" ref={container}>
       <h1
         className="rotating-headline"
-        aria-label="Complex problems. Thoughtful products."
+        aria-label="Aldo Marcelino, Full Stack Software Engineer. Complex problems. Thoughtful products."
       >
         {headlines.map((headline, index) => (
           <span

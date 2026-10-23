@@ -6,8 +6,8 @@
   --muted: #a0a49a;
   --line: #34382e;
   --lime: #d2f780;
-  --font-sans: "Manrope Variable", sans-serif;
-  --font-serif: "Instrument Serif", serif;
+  --font-sans: var(--font-manrope), sans-serif;
+  --font-serif: var(--font-editorial), serif;
 }
 @theme inline {
   --color-background: var(--bg);
@@ -25,7 +25,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Manrope Variable", sans-serif;
+  font-family: var(--font-manrope), sans-serif;
   font-size: 15px;
   -webkit-font-smoothing: antialiased;
 }

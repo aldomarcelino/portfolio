@@ -1,3 +1,4 @@
+import { StructuredData } from "@/components/structured-data";
 import { AboutSignature } from "@/components/about-signature";
 import { HeroHeadline } from "@/components/hero-headline";
 import { HeroAtmosphere } from "@/components/hero-atmosphere";
@@ -36,6 +37,7 @@ const approach = [
 export default function Home() {
   return (
     <>
+      <StructuredData />
       <a className="skip-link" href="#main">
         Skip to content
       </a>
@@ -54,8 +56,8 @@ export default function Home() {
             <div className="hero-copy">
               <HeroHeadline />
               <p className="hero-lead entrance delay-two">
-                I’m Aldo, a full-stack engineer turning complex problems into
-                software that feels simple.
+                I’m Aldo Marcelino, a full-stack software engineer turning complex
+                problems into software that feels simple.
               </p>
               <p className="hero-description entrance delay-two">
                 {profile.summary}

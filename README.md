@@ -40,6 +40,24 @@ Click the musical-note area (or use its keyboard-focusable button) to play a loc
 
 The geometric `Al1` monogram spells Aldo as **Al + 1**, with **1 = do**, the first scale degree in numbered musical notation. Its three custom strokes represent A, lowercase l, and 1; a short underline gives the tonic a visual anchor. The shared React mark is in `src/components/icons.tsx`, the reusable SVG in `public/brand/al1-mark.svg`, and the matching favicon in `src/app/icon.svg`.
 
+## SEO and launch configuration
+
+SEO copy is centralized in `src/data/seo.ts`. The portfolio includes server-rendered title/description and author metadata, Open Graph and Twitter cards, ProfilePage/Person JSON-LD based on verified profile data, a generated 1200 × 630 sharing image at `/social-image`, and Next.js metadata routes for `/robots.txt` and `/sitemap.xml`. The main variable font is self-hosted and preloaded through `next/font/local`; editorial fonts remain self-hosted and load only when needed.
+
+There is no assumed production domain. Until `SITE_URL` is configured, canonical URLs, absolute sharing-image metadata, WebSite schema, and sitemap URLs are omitted instead of inventing a domain or publishing localhost links. The empty sitemap is intentional. Development and Vercel preview pages emit `noindex`; production pages allow indexing. Robots allows crawling so search engines can read these page-level directives.
+
+When a final domain is ready:
+
+1. Copy `.env.example` to `.env.local` for local production testing, or set the same variables in the hosting dashboard.
+2. Set `SITE_URL` to the final HTTPS origin, with no path, query, or fragment. Build again after changing this value.
+3. Optionally set `GOOGLE_SITE_VERIFICATION` to a real Search Console HTML verification value. No verification code is fabricated.
+4. Deploy, verify the domain in Google Search Console, and submit `/sitemap.xml`.
+5. Check the deployed URL with Search Console URL Inspection, Google's Rich Results Test, and PageSpeed Insights. Review actual mobile Core Web Vitals once field data is available.
+
+Only the homepage is included in the sitemap: `#projects`, `#about`, and other sections are fragments of the same page. No fictitious modification dates, ratings, or achievements are added to schema. Unique project case-study pages with authentic screenshots, technical decisions, and outcomes are the next content improvement when that material is available.
+
+References: [Google title guidance](https://developers.google.com/search/docs/appearance/title-link), [profile structured data](https://developers.google.com/search/docs/appearance/structured-data/profile-page), [sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap). These changes improve technical readiness; they do not guarantee rankings or a specific audit score.
+
 ## Checks
 
 ```bash
@@ -48,4 +66,4 @@ npm run typecheck
 npm run build
 ```
 
-Before public deployment, review contact details and role dates, supply a production domain/canonical URL and authentic project links, and update Next.js to the latest compatible security patch. The requested 16.0.7 version is pinned for this foundation.
+Before public deployment, review contact details and role dates, configure `SITE_URL` and supply authentic project links, and update Next.js to the latest compatible security patch. The requested 16.0.7 version is pinned for this foundation.
