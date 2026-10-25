@@ -13,6 +13,7 @@ import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { experiences } from "@/data/experience";
 import "./section-scenes.css";
+import "./responsive.css";
 const approach = [
   {
     title: "Start with the problem.",

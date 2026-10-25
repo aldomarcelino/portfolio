@@ -64,6 +64,7 @@ export function Navigation() {
           <ThemeToggle />
           <a
             className="nav-resume"
+            aria-label="View résumé"
             href={profile.resume}
             target="_blank"
             rel="noreferrer"

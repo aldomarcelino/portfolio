@@ -1,0 +1,341 @@
+/* Allow content columns to shrink without pushing the viewport sideways. */
+.hero-grid > *,
+.section-heading > *,
+.project-grid > *,
+.approach-grid > *,
+.experience-section > *,
+.about-section > *,
+.experience-main {
+  min-width: 0;
+}
+
+.email-link,
+.education-line,
+.skill-groups p {
+  overflow-wrap: anywhere;
+}
+
+.nav-shell .wordmark {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 960px) {
+  .hero .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    min-height: 0;
+  }
+
+  .hero .hero-copy {
+    max-width: 680px;
+  }
+
+  .hero .rotating-headline {
+    font-size: clamp(42px, 7.6vw, 72px);
+    letter-spacing: -2.5px;
+    white-space: normal;
+  }
+
+  .hero .hero-visual {
+    padding: 0;
+    width: 100%;
+    max-width: 440px;
+    justify-self: center;
+    margin: 0;
+  }
+
+  .hero .hero-bottom {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .hero-bottom > span:nth-child(2) {
+    display: none;
+  }
+
+  .section-scene .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .section-scene .section-heading > p {
+    max-width: 480px;
+  }
+
+  .work-section.section-scene .project-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+  }
+
+  .approach-section.section-scene .approach-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .approach-section.section-scene .approach-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 160px;
+    column-gap: 24px;
+    padding: 28px;
+  }
+
+  .approach-section.section-scene .approach-art {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    width: 160px;
+    height: 140px;
+    align-self: center;
+    margin: 0;
+  }
+
+  .approach-section.section-scene .approach-card > :not(.approach-art) {
+    grid-column: 1;
+    max-width: none;
+  }
+
+  .approach-section.section-scene .stack {
+    gap: 6px;
+  }
+
+  .approach-section.section-scene .stack i {
+    font-size: 10px;
+    padding: 10px 7px;
+  }
+
+  .approach-section.section-scene .stack b {
+    font-size: 12px;
+  }
+
+  main > .experience-section.section-scene {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+  }
+
+  .experience-section.section-scene .experience-list {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .experience-intro > p {
+    max-width: 440px;
+  }
+
+  .contact-section .contact-bottom {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .contact-section .contact-main h2 {
+    font-size: clamp(52px, 8vw, 78px);
+    letter-spacing: -3px;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-header .mobile-nav {
+    top: 100%;
+    max-height: calc(100svh - var(--mobile-header-height, 80px) - 1px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-block: 8px max(20px, env(safe-area-inset-bottom));
+  }
+
+  .mobile-nav a {
+    min-height: 56px;
+    padding-block: 14px;
+    font-size: 24px;
+  }
+
+  .nav-shell .menu-toggle {
+    width: 44px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .site-header {
+    --mobile-header-height: 72px;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    --mobile-header-height: 64px;
+  }
+
+  .nav-shell {
+    gap: 4px;
+  }
+
+  .nav-shell .nav-actions {
+    gap: 2px;
+  }
+
+  .nav-shell .theme-toggle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero .rotating-headline {
+    font-size: clamp(30px, 9.2vw, 52px);
+    letter-spacing: -1.5px;
+  }
+
+  .hero .hero-actions {
+    flex-wrap: wrap;
+    gap: 12px 24px;
+  }
+
+  .hero .hero-location {
+    flex-wrap: wrap;
+    line-height: 1.8;
+  }
+
+  .section-scene h2 {
+    font-size: clamp(29px, 8.6vw, 40px);
+    letter-spacing: -1.3px;
+    overflow-wrap: break-word;
+  }
+
+  .approach-section.section-scene .approach-card {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  .approach-section.section-scene .approach-art {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+  }
+
+  .approach-section.section-scene .approach-card h3 {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  .approach-section.section-scene .product i {
+    width: 56px;
+    height: 56px;
+    margin-left: -24px;
+  }
+
+  .approach-section.section-scene .product i:first-child {
+    margin-left: 0;
+  }
+
+  .approach-section.section-scene .product > span {
+    font-size: 7px;
+    bottom: 0;
+  }
+
+  .approach-section.section-scene .stack {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .approach-section.section-scene .stack i {
+    font-size: 10px;
+    padding: 12px 8px;
+  }
+
+  .approach-section.section-scene .stack b {
+    transform: none;
+    font-size: 14px;
+  }
+
+  .approach-section.section-scene .maintain {
+    font-size: 10px;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .experience-section .experience-main strong {
+    font-size: 18px;
+    overflow-wrap: anywhere;
+  }
+
+  .experience-section .experience-trigger {
+    gap: 10px;
+  }
+
+  .experience-section .experience-detail {
+    padding-inline: 0;
+  }
+
+  .experience-section .experience-detail ul {
+    padding-left: 20px;
+  }
+
+  .contact-section .contact-main {
+    gap: 20px;
+  }
+
+  .contact-section .contact-main h2 {
+    font-size: clamp(44px, 12vw, 68px);
+    letter-spacing: -2px;
+  }
+
+  .contact-section .contact-arrow {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+  }
+
+  .contact-section .email-link {
+    font-size: clamp(12px, 3.7vw, 16px);
+    gap: 10px;
+  }
+
+  .contact-section .social-links {
+    flex-wrap: wrap;
+    gap: 12px 24px;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-shell .wordmark {
+    font-size: 12px;
+    gap: 5px;
+  }
+
+  .nav-shell .wordmark > .brand-mark {
+    width: 28px;
+  }
+
+  .nav-shell .nav-resume {
+    min-width: 44px;
+    width: 44px;
+    padding-inline: 0;
+  }
+
+  .nav-shell .resume-label {
+    font-size: 0;
+    gap: 0;
+  }
+
+  .nav-shell .resume-label svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .nav-shell .resume-hover-label {
+    display: none;
+  }
+
+  .nav-shell .nav-resume::after {
+    display: none;
+  }
+
+  .nav-shell .nav-resume:is(:hover, :focus-visible) .resume-label {
+    opacity: 1;
+    transform: none;
+  }
+
+  .nav-shell .nav-resume:is(:hover, :focus-visible) {
+    color: var(--lime);
+    background: var(--surface);
+    border-color: var(--lime);
+  }
+}
