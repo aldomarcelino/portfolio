@@ -221,7 +221,7 @@ em {
   gap: 28px;
   align-items: center;
   min-height: 570px;
-  padding: 42px 0 55px;
+  padding: 0 0 55px;
 }
 .hero-copy {
   position: relative;
@@ -1574,7 +1574,7 @@ section[id] {
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 12px;
-    padding-top: 34px;
+    padding-top: 0;
     padding-bottom: 30px;
   }
   .hero h1 {
@@ -1873,7 +1873,7 @@ section[id] {
     letter-spacing: 1.4px;
   }
   .hero-grid {
-    padding-top: 31px;
+    padding-top: 0;
     gap: 0;
   }
   .hero h1 {

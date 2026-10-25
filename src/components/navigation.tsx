@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { profile } from "@/data/profile";
 import { Arrow, Mark } from "./icons";
 import { ThemeToggle } from "./theme-toggle";
-const links = ["About", "Experience", "Projects", "Contact"];
+const links = ["About", "Experience", "Projects", "Tools", "Contact"];
 export function Navigation() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);

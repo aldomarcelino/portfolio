@@ -75,7 +75,7 @@ export function AboutSignature() {
 
   return (
     <div className="about-heading about-signature" data-reveal ref={container}>
-      <span className="section-kicker">04 / A LITTLE ABOUT ME</span>
+      <span className="section-kicker">05 / A LITTLE ABOUT ME</span>
       <div className="about-music-field" aria-hidden="true">
         <svg
           viewBox="0 0 380 620"

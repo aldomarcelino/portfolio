@@ -7,10 +7,12 @@ import { Navigation } from "@/components/navigation";
 import { Enhancements } from "@/components/enhancements";
 import { SystemVisual } from "@/components/system-visual";
 import { ProjectCard } from "@/components/project-card";
+import { FreeTools } from "@/components/free-tools";
 import { Arrow, Mark } from "@/components/icons";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { experiences } from "@/data/experience";
+import "./section-scenes.css";
 const approach = [
   {
     title: "Start with the problem.",
@@ -45,13 +47,6 @@ export default function Home() {
       <main id="main">
         <section className="hero section-shell" id="home">
           <HeroAtmosphere />
-          <div className="hero-eyebrow entrance">
-            <span className="status-dot" />
-            <span className="micro">SOFTWARE ENGINEER / FULL STACK</span>
-            <span className="hero-edition micro">
-              INDEPENDENT MIND. CONNECTED THINKING.
-            </span>
-          </div>
           <div className="hero-grid">
             <div className="hero-copy">
               <HeroHeadline />
@@ -95,7 +90,7 @@ export default function Home() {
             <span className="micro">PORTFOLIO — 2026</span>
           </div>
         </section>
-        <section className="work-section section-shell" id="projects">
+        <section className="work-section section-shell section-scene" id="projects">
           <div className="section-heading" data-reveal>
             <div>
               <span className="section-kicker">01 / SELECTED WORK</span>
@@ -121,10 +116,11 @@ export default function Home() {
             More case studies to come.
           </p>
         </section>
-        <section className="approach-section section-shell" id="approach">
+        <FreeTools />
+        <section className="approach-section section-shell section-scene" id="approach">
           <div className="section-heading" data-reveal>
             <div>
-              <span className="section-kicker">02 / THE WAY I WORK</span>
+              <span className="section-kicker">03 / THE WAY I WORK</span>
               <h2>
                 Good software starts
                 <br />
@@ -175,9 +171,9 @@ export default function Home() {
             ))}
           </div>
         </section>
-        <section className="experience-section section-shell" id="experience">
+        <section className="experience-section section-shell section-scene" id="experience">
           <div className="experience-intro" data-reveal>
-            <span className="section-kicker">03 / EXPERIENCE</span>
+            <span className="section-kicker">04 / EXPERIENCE</span>
             <h2>
               Real teams.
               <br />
@@ -198,7 +194,7 @@ export default function Home() {
           </div>
           <ExperienceList items={experiences} />
         </section>
-        <section className="about-section section-shell" id="about">
+        <section className="about-section section-shell section-scene" id="about">
           <AboutSignature />
           <div className="about-copy" data-reveal>
             <h2>
@@ -236,9 +232,9 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="contact-section section-shell" id="contact">
+        <section className="contact-section section-shell section-scene" id="contact">
           <div className="contact-top" data-reveal>
-            <span className="section-kicker">05 / WHAT’S NEXT?</span>
+            <span className="section-kicker">06 / WHAT’S NEXT?</span>
             <span className="micro">
               GOOD THINGS START WITH A CONVERSATION.
             </span>

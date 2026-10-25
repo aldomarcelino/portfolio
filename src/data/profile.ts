@@ -17,15 +17,15 @@ export const profile: Profile = {
   skills: [
     {
       category: "Frontend",
-      items: ["TypeScript", "React", "Next.js", "Tailwind CSS"],
+      items: ["TypeScript", "React", "Next.js", "Vue", "Tailwind CSS"],
     },
     {
       category: "Backend",
-      items: ["Node.js", "NestJS", "GraphQL", "REST APIs"],
+      items: ["Node.js", "NestJS", "Go", "GraphQL", "REST APIs"],
     },
     {
       category: "Data & delivery",
-      items: ["PostgreSQL", "MongoDB", "Redis", "Docker"],
+      items: ["PostgreSQL", "MongoDB", "MySQL", "Redis", "Docker"],
     },
   ],
 };

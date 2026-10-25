@@ -1,101 +1,82 @@
 "use client";
-import { useState } from "react";
+
+import { useEffect, useState, useSyncExternalStore, type CSSProperties } from "react";
+import styles from "./system-visual.module.css";
+
 const layers = [
-  {
-    name: "Interface",
-    caption: "Considered experiences",
-    code: "React / Next.js",
-  },
-  {
-    name: "Application",
-    caption: "Connected systems",
-    code: "Node.js / NestJS",
-  },
-  {
-    name: "Foundation",
-    caption: "Built to last",
-    code: "PostgreSQL / MongoDB",
-  },
+  { name: "Interface", caption: "Where people meet the product.", description: "Thoughtful interfaces. Responsive experiences.", stack: ["React", "Next.js", "Vue"], symbol: "</>", detail: "DESIGN → EXPERIENCE" },
+  { name: "Application", caption: "The logic behind the experience.", description: "APIs, services, and the connections between them.", stack: ["Node.js", "NestJS", "Go"], symbol: "{ }", detail: "REQUEST → RESPONSE" },
+  { name: "Database", caption: "A foundation for every interaction.", description: "Structured data. Reliable persistence.", stack: ["PostgreSQL", "MongoDB", "MySQL"], symbol: "DB", detail: "STORE → CONNECT → RETRIEVE" },
 ];
+function subscribeToMotion(callback: () => void) {
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+  media.addEventListener("change", callback);
+  return () => media.removeEventListener("change", callback);
+}
+const getMotionPreference = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const getServerPreference = () => false;
+
 export function SystemVisual() {
   const [active, setActive] = useState(0);
+  const [outgoing, setOutgoing] = useState<number | null>(null);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const reduced = useSyncExternalStore(subscribeToMotion, getMotionPreference, getServerPreference);
+
+  useEffect(() => {
+    if (hovered || focused || reduced) return;
+    const timer = window.setInterval(() => {
+      if (document.hidden) return;
+      setOutgoing(active);
+      setActive((active + 1) % layers.length);
+    }, 5000);
+    return () => window.clearInterval(timer);
+  }, [active, hovered, focused, reduced]);
+
+  useEffect(() => {
+    if (outgoing === null) return;
+    const timer = window.setTimeout(() => setOutgoing(null), 700);
+    return () => window.clearTimeout(timer);
+  }, [outgoing]);
+
+  function select(index: number) {
+    if (index === active || outgoing !== null) return;
+    setOutgoing(active);
+    setActive(index);
+  }
+
   return (
-    <div className="system-visual">
-      <div className="visual-top">
-        <span className="micro">A SYSTEM OF INTENT</span>
-        <span className="system-status">
-          <i />
-          INTERACTIVE SYSTEM
-        </span>
+    <div className={styles.visual} role="region" aria-label="My technology stack"
+      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
+      onFocusCapture={() => setFocused(true)}
+      onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
+      <div className={styles.header}><span>A SYSTEM OF INTENT</span><span className={styles.status}><i /> FULL STACK</span></div>
+      <div className={styles.deck}>
+        {layers.map((layer, index) => {
+          const position = (index - active + layers.length) % layers.length;
+          return (
+            <article key={layer.name} className={`${styles.card} ${outgoing === index ? styles.outgoing : ""}`}
+              style={{ "--position": position } as CSSProperties} data-front={position === 0} aria-hidden={position !== 0}>
+              <div className={styles.cardTop}><span>0{index + 1} / THE STACK</span><span className={styles.cardDot} /></div>
+              <div className={styles.symbol} aria-hidden="true">{layer.symbol}</div>
+              <h3>{layer.name}<span>.</span></h3>
+              <p>{layer.description}</p>
+              <ul className={styles.stack} aria-label={`${layer.name} technologies`}>
+                {layer.stack.map((technology) => <li key={technology}>{technology}</li>)}
+              </ul>
+              <div className={styles.cardBottom}><span>{layer.detail}</span><span aria-hidden="true">↗</span></div>
+            </article>
+          );
+        })}
       </div>
-      <div className={`system-art layer-${active}`} aria-hidden="true">
-        <div className="system-depth">
-          <div className="signal-halo" />
-          <div className="signal-packet packet-one" />
-          <div className="signal-packet packet-two" />
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
-          <div className="axis" />
-          <div className="system-plane plane-one">
-            <span>01</span>
-            <b>INTERFACE</b>
-            <i />
-          </div>
-          <div className="system-plane plane-two">
-            <span>02</span>
-            <b>APPLICATION</b>
-            <i />
-          </div>
-          <div className="system-plane plane-three">
-            <span>03</span>
-            <b>FOUNDATION</b>
-            <i />
-          </div>
-          <div className="core-point" />
+      <div className={styles.controls}>
+        <div className={styles.selectors} role="group" aria-label="Choose a stack layer">
+          {layers.map((layer, index) => (
+            <button key={layer.name} type="button" aria-pressed={index === active} onClick={() => select(index)}>{layer.name}</button>
+          ))}
         </div>
       </div>
-      <div
-        className="layer-tabs"
-        role="tablist"
-        aria-label="Explore application layers"
-      >
-        {layers.map((layer, i) => (
-          <button
-            key={layer.name}
-            id={`layer-tab-${i}`}
-            role="tab"
-            aria-selected={i === active}
-            aria-controls="layer-panel"
-            tabIndex={i === active ? 0 : -1}
-            onClick={() => setActive(i)}
-            onKeyDown={(e) => {
-              if (["ArrowRight", "ArrowLeft", "Home", "End"].includes(e.key)) {
-                e.preventDefault();
-                const next =
-                  e.key === "Home"
-                    ? 0
-                    : e.key === "End"
-                      ? 2
-                      : (active + (e.key === "ArrowRight" ? 1 : 2)) % 3;
-                setActive(next);
-                document.getElementById(`layer-tab-${next}`)?.focus();
-              }
-            }}
-          >
-            <span>0{i + 1}</span>
-            {layer.name}
-          </button>
-        ))}
-      </div>
-      <div
-        className="visual-caption"
-        id="layer-panel"
-        role="tabpanel"
-        aria-labelledby={`layer-tab-${active}`}
-      >
-        <span>{layers[active].caption}</span>
-        <span>{layers[active].code}</span>
-      </div>
+      <p className={styles.caption}>{layers[active].caption}</p>
     </div>
   );
 }

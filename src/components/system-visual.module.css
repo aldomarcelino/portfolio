@@ -1,0 +1,51 @@
+.visual { width: 100%; max-width: 470px; margin: auto; padding-top: 16px; }
+.header { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 9px; font-weight: 600; letter-spacing: 1.5px; }
+.status { display: inline-flex; align-items: center; gap: 6px; font-size: 8px; letter-spacing: 1px; }
+.status i, .cardDot { width: 5px; height: 5px; border-radius: 50%; background: var(--lime); }
+.deck { position: relative; height: 408px; margin: 30px 0 16px; isolation: isolate; }
+.card {
+  position: absolute; inset: 24px 0 auto; width: min(76%, 308px); min-height: 336px; margin-inline: auto; padding: 24px;
+  border: 1px solid var(--plane-line); border-radius: 22px; background: var(--surface); box-shadow: 0 16px 32px #00000018;
+  transform-origin: 50% 85%;
+  transform: translate(calc(var(--position) * 17px), calc(var(--position) * -12px)) rotate(calc(var(--position) * 5deg)) scale(calc(1 - var(--position) * 0.035));
+  z-index: calc(3 - var(--position));
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1), border-color 650ms;
+}
+.card[data-front="true"] { border-color: var(--lime); background: linear-gradient(145deg, color-mix(in srgb, var(--lime) 7%, var(--surface)), var(--surface) 65%); }
+.cardTop, .cardBottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-family: monospace; font-size: 8px; letter-spacing: 1px; color: var(--muted); }
+.symbol { display: grid; place-items: center; width: 58px; height: 58px; margin: 26px 0 20px; border: 1px solid var(--line); border-radius: 14px; color: var(--lime); font-family: monospace; font-size: 23px; letter-spacing: -2px; }
+.card h3 { font-size: clamp(24px, 2.5vw, 32px); font-weight: 500; letter-spacing: -1.2px; line-height: 1.2; }
+.card h3 > span { color: var(--lime); }
+.card p { min-height: 40px; margin-top: 10px; font-size: 11px; line-height: 1.8; max-width: 230px; }
+.stack { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 20px 0 24px; list-style: none; }
+.stack li { padding: 5px 8px; border: 1px solid var(--line); border-radius: 6px; font-size: 10px; color: var(--text-secondary); }
+.cardBottom { border-top: 1px solid var(--line); padding-top: 14px; font-size: 7px; }
+.cardBottom > span:last-child { color: var(--lime); font-size: 16px; }
+.outgoing { animation: shuffle 700ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+@keyframes shuffle {
+  0% { transform: translate(0, 0) rotate(0); z-index: 4; }
+  45% { transform: translate(22%, -12px) rotate(10deg) scale(0.97); z-index: 4; }
+  46% { z-index: 0; }
+  100% { transform: translate(calc(var(--position) * 17px), calc(var(--position) * -12px)) rotate(calc(var(--position) * 5deg)) scale(calc(1 - var(--position) * 0.035)); z-index: 0; }
+}
+.controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); padding-top: 8px; }
+.selectors { display: flex; flex: 1; gap: 4px; }
+.selectors button { flex: 1; min-height: 44px; padding: 8px 4px; background: transparent; color: var(--muted); font-size: 10px; border-bottom: 1px solid transparent; }
+.selectors button[aria-pressed="true"] { color: var(--lime); border-color: var(--lime); }
+.selectors button:hover { color: var(--text); }
+.caption { margin-top: 12px; font-size: 11px; text-align: center; }
+@media (max-width: 1100px) and (min-width: 801px) {
+  .card { padding: 20px; width: 80%; }
+  .header { font-size: 8px; letter-spacing: 1px; }
+  .status { font-size: 7px; }
+}
+@media (max-width: 600px) {
+  .visual { max-width: 370px; }
+  .deck { margin-top: 24px; }
+  .card { width: 78%; padding: 22px; }
+  .card h3 { font-size: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+  .outgoing { animation: none; }
+}

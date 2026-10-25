@@ -1,0 +1,189 @@
+/* Three recurring canvases: base, raised neutral, and the lime contact accent. */
+:root {
+  --chapter-base: #131512;
+  --chapter-raised: #1b1e18;
+  --chapter-card: #24291f;
+}
+
+:root[data-theme="light"] {
+  --chapter-base: #f5f4ec;
+  --chapter-raised: #eaece0;
+  --chapter-card: #f5f4ec;
+}
+
+/* Each chapter has a full-width canvas; the content keeps a shared alignment. */
+main > section.section-scene {
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: max(6.25%, calc((100% - 1260px) / 2));
+  padding-block: clamp(80px, 9vw, 140px);
+  border-top: 0;
+  color: var(--text);
+  isolation: isolate;
+}
+
+.section-scene .section-heading {
+  margin-bottom: clamp(40px, 5vw, 72px);
+}
+
+/* Work: a quiet gallery, with the projects presented at equal weight. */
+main > .work-section.section-scene,
+main > .approach-section.section-scene,
+main > .about-section.section-scene {
+  --bg: var(--chapter-raised);
+  --surface: var(--chapter-card);
+  background: var(--bg);
+}
+
+.work-section.section-scene .project-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 56px);
+}
+
+.work-section.section-scene .project-card:nth-child(2) {
+  padding-top: 0;
+}
+
+.work-section.section-scene .project-preview {
+  border-radius: 20px;
+}
+
+.work-section.section-scene .work-footnote {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+/* Tools returns to the base canvas, retaining the shared lime accent. */
+main > #tools.section-scene {
+  background: var(--chapter-base);
+}
+
+#tools.section-scene > [data-reveal]:last-child {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px #00000020;
+}
+
+/* Approach changes the composition while repeating the raised canvas. */
+.approach-section.section-scene .section-heading {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+.approach-section.section-scene .section-heading > p {
+  max-width: 420px;
+}
+
+.approach-section.section-scene .approach-grid {
+  gap: 24px;
+}
+
+.approach-section.section-scene .approach-card {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 28px;
+  background: var(--surface);
+}
+
+.approach-section.section-scene .approach-art {
+  color: var(--lime);
+}
+
+.approach-section.section-scene .maintain span,
+.approach-section.section-scene .product > span {
+  color: var(--muted);
+}
+
+/* Experience: a restrained record, with the current role given a clear focus. */
+main > .experience-section.section-scene {
+  background: var(--bg);
+  align-items: start;
+}
+
+.experience-section.section-scene .experience-list {
+  border-left: 1px solid var(--line);
+  padding-left: clamp(24px, 3vw, 48px);
+}
+
+.experience-section.section-scene .experience-item {
+  padding-inline: 20px;
+  border-radius: 12px;
+}
+
+.experience-section.section-scene .experience-item[data-expanded="true"] {
+  background: var(--surface);
+}
+
+.experience-section.section-scene .experience-item:first-child {
+  border-top: 0;
+}
+
+/* About uses the same raised neutral as Work and Approach. */
+.about-section.section-scene .skill-groups {
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.about-section.section-scene .about-lead {
+  color: var(--text-secondary);
+}
+
+main > .contact-section.section-scene {
+  color: #1d2816;
+}
+
+@media (min-width: 1000px) {
+  .experience-section.section-scene .experience-intro {
+    position: sticky;
+    top: 128px;
+  }
+}
+
+@media (max-width: 800px) {
+  main > section.section-scene {
+    padding-block: 72px;
+  }
+
+  .work-section.section-scene .project-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .experience-section.section-scene .experience-list {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .approach-section.section-scene .approach-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  main > section.section-scene {
+    padding-inline: 6%;
+    padding-block: 60px;
+  }
+
+  .section-scene .section-kicker {
+    font-size: 10px;
+    letter-spacing: 1.6px;
+  }
+
+  .approach-section.section-scene .section-heading {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .experience-section.section-scene .experience-item {
+    padding-inline: 12px;
+  }
+
+  #tools.section-scene > [data-reveal]:last-child,
+  .work-section.section-scene .project-preview {
+    border-radius: 16px;
+  }
+}
