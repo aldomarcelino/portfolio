@@ -1,6 +1,6 @@
 # Aldo Marcelino — Portfolio
 
-An editorial, dual-theme portfolio built with Next.js 16.0.7, React 19, TypeScript, and Tailwind CSS 4. Fonts are bundled locally. No external image requests, backend, or animation dependencies.
+An editorial, dual-theme portfolio built with Next.js 16.4.3, React 19, TypeScript, and Tailwind CSS 4. Fonts are bundled locally. No external image requests, backend, or animation dependencies.
 
 ## Run
 
@@ -44,7 +44,7 @@ The geometric `Al1` monogram spells Aldo as **Al + 1**, with **1 = do**, the fir
 
 SEO copy is centralized in `src/data/seo.ts`. The portfolio includes server-rendered title/description and author metadata, Open Graph and Twitter cards, ProfilePage/Person JSON-LD based on verified profile data, a generated 1200 × 630 sharing image at `/social-image`, and Next.js metadata routes for `/robots.txt` and `/sitemap.xml`. The main variable font is self-hosted and preloaded through `next/font/local`; editorial fonts remain self-hosted and load only when needed.
 
-There is no assumed production domain. Until `SITE_URL` is configured, canonical URLs, absolute sharing-image metadata, WebSite schema, and sitemap URLs are omitted instead of inventing a domain or publishing localhost links. The empty sitemap is intentional. Development and Vercel preview pages emit `noindex`; production pages allow indexing. Robots allows crawling so search engines can read these page-level directives.
+On Vercel, the platform-provided `VERCEL_PROJECT_PRODUCTION_URL` supplies the stable production origin. `SITE_URL` overrides it when configured. No per-deployment preview hostname is used. Outside Vercel, until `SITE_URL` is configured, canonical URLs, absolute sharing-image metadata, WebSite schema, and sitemap URLs are omitted instead of inventing a domain or publishing localhost links. The empty sitemap is intentional. Development and Vercel preview pages emit `noindex`; production pages allow indexing. Robots allows crawling so search engines can read these page-level directives.
 
 When a final domain is ready:
 
@@ -66,4 +66,13 @@ npm run typecheck
 npm run build
 ```
 
-Before public deployment, review contact details and role dates, configure `SITE_URL` and supply authentic project links, and update Next.js to the latest compatible security patch. The requested 16.0.7 version is pinned for this foundation.
+## Deploy to Vercel
+
+1. Import this repository into Vercel. Root directory: repository root, **not** `src/app`.
+2. Select Next.js and Node.js **24.x**. `vercel.json` configures `npm ci` and `npm run build`; keep the output directory default.
+3. Use `main` as the production branch. Production and Preview environments must remain separate.
+4. Deploy to the provided `vercel.app` address. No database, secrets, or custom domain are required.
+5. If attaching a custom domain, optionally set `SITE_URL` in Production to its HTTPS origin and redeploy. Leave this override unset in Preview.
+6. Check `/`, `/Aldo-Marcelino-CV.pdf`, `/social-image`, `/robots.txt`, and `/sitemap.xml`. Confirm preview HTML contains `noindex` and production canonical points to the production domain.
+
+Next.js/React were updated for production preparation. `npm audit` checks the installed dependency tree. Review actual contact details and dates before publishing; project cover concepts remain explicitly identified.

@@ -24,6 +24,10 @@ export function getSiteUrl(value = process.env.SITE_URL): URL | undefined {
   return new URL(url.origin);
 }
 
-export const siteUrl = getSiteUrl();
-export const isPreview = process.env.VERCEL_ENV === "preview";
+// Vercel supplies the stable production hostname, never a per-build preview URL.
+const productionHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+export const siteUrl = getSiteUrl(
+  process.env.SITE_URL?.trim() || (productionHost ? `https://${productionHost}` : undefined),
+);
+export const isPreview = Boolean(process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production");
 export const isIndexable = process.env.NODE_ENV === "production" && !isPreview;
