@@ -2,7 +2,7 @@ import type { Profile } from "./types";
 export const profile: Profile = {
   name: "Aldo Marcelino",
   title: "Software Engineer / Full Stack",
-  email: "aldo115marcelino@gmail.com",
+  email: "aldomarcelinolubis@gmail.com",
   location: "Jakarta, Indonesia",
   summary:
     "I build web applications across frontend and backend, from SaaS platforms to products built with small teams. I focus on clear interfaces, reliable services, and maintainable code.",
