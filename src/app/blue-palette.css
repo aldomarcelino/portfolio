@@ -1,0 +1,120 @@
+/* Local palette experiment. Remove the import in layout.tsx to restore lime. */
+html:root[data-theme="dark"] {
+  --bg: #050b16;
+  --surface: #0a1e3b;
+  --text: #eef4ff;
+  --muted: #a0b0c8;
+  --text-secondary: #cbd9ee;
+  --line: #21466f;
+  --accent: #2997ff;
+  /* Keep the existing accent token compatible with all components. */
+  --lime: var(--accent);
+  --header-bg: #050b16f2;
+  --button-bg: #005bea;
+  --button-text: #ffffff;
+  --button-hover: #004bc4;
+  --contact-bg: #005bea;
+  --contact-ink: #ffffff;
+  --contact-muted: #dfecff;
+  --contact-line: #8ab9ff;
+  --contact-hover: #004bc4;
+  --grid-dot: #2997ff;
+  --aura: #006cff;
+  --plane-bg: linear-gradient(135deg, #123e73e0, #0a2243e0);
+  --plane-active: linear-gradient(135deg, #005beaa0, #103866f0);
+  --plane-line: #2886df80;
+  --plane-active-line: #2997ff;
+  --orbit-line: #2997ff38;
+  --signal: #2997ff;
+  --chapter-base: #050b16;
+  --chapter-raised: #0a1e3b;
+  --chapter-card: #0e2b50;
+}
+
+html:root[data-theme="light"] {
+  --bg: #f5f8ff;
+  --surface: #e1ebfc;
+  --text: #172640;
+  --muted: #526580;
+  --text-secondary: #344d70;
+  --line: #c5d3e9;
+  --accent: #0052d6;
+  --lime: var(--accent);
+  --header-bg: #f5f8fff2;
+  --button-bg: #005bea;
+  --button-text: #ffffff;
+  --button-hover: #004bc4;
+  --contact-bg: #005bea;
+  --contact-ink: #ffffff;
+  --contact-muted: #dfecff;
+  --contact-line: #8ab9ff;
+  --contact-hover: #004bc4;
+  --grid-dot: #0062ea;
+  --aura: #006cff;
+  --plane-bg: linear-gradient(135deg, #c8d9f3e6, #e4edfbef);
+  --plane-active: linear-gradient(135deg, #a5c2ece6, #d1e0f7ee);
+  --plane-line: #7d9bc5;
+  --plane-active-line: #0052d6;
+  --orbit-line: #0062ea4d;
+  --signal: #0052d6;
+  --chapter-base: #f5f8ff;
+  --chapter-raised: #e1ebfc;
+  --chapter-card: #f5f8ff;
+}
+
+/* Fixed-color details also follow the experiment's blue palette. */
+.site-header .resume-hover-label {
+  color: var(--button-text);
+}
+
+.site-header .nav-resume::after {
+  background: var(--button-bg);
+}
+
+.site-header .nav-resume:is(:hover, :focus-visible) {
+  border-color: var(--accent);
+}
+
+main > #contact.contact-section {
+  color: var(--contact-ink);
+}
+
+#contact .contact-top .section-kicker,
+#contact .contact-main h2 em {
+  color: var(--contact-ink);
+}
+
+#contact .contact-top > .micro {
+  color: var(--contact-muted);
+}
+
+#contact .contact-arrow,
+#contact .contact-bottom {
+  border-color: var(--contact-line);
+}
+
+#contact .contact-arrow:hover {
+  background: var(--contact-hover);
+}
+
+#contact .text-link::after {
+  background: var(--contact-ink);
+}
+
+.approach-section .product i:nth-child(2),
+.approach-section .stack i {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+.monogram-orbit::after {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+/* The project artwork retains its own product identities. */
+.project-preview {
+  border-color: var(--line);
+}
+
+.project-card:hover .project-preview {
+  border-color: var(--accent);
+}

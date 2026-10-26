@@ -1,0 +1,44 @@
+.button {
+  touch-action: manipulation;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  transform-origin: center;
+}
+
+.icon svg {
+  grid-area: 1 / 1;
+}
+
+.spinning {
+  animation: change-theme 640ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes change-theme {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  42% {
+    transform: rotate(150deg) scale(0.55);
+    opacity: 0;
+  }
+  58% {
+    transform: rotate(210deg) scale(0.55);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinning {
+    animation: none;
+  }
+}

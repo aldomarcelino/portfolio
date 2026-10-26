@@ -7,7 +7,7 @@
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   border: 1px solid var(--line);
-  background: var(--surface);
+  background: transparent;
 }
 
 .intro {
@@ -43,7 +43,7 @@
 
 .intro h3 {
   font-size: clamp(26px, 2.6vw, 36px);
-  font-weight: 550;
+  font-weight: 700;
   line-height: 1.2;
   letter-spacing: -1px;
 }
@@ -102,9 +102,9 @@
   place-items: center;
   width: 44px;
   height: 44px;
-  border: 1px solid var(--line);
+  border: 0;
   color: var(--lime);
-  font-family: monospace;
+  font-family: var(--font-sans);
   font-size: 20px;
 }
 

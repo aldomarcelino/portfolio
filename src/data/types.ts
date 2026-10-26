@@ -18,7 +18,12 @@ export type Project = {
   description: string;
   stack: string[];
   details: string[];
-  preview: "streaming" | "marketplace";
+  status: "Live product" | "Archived" | "Prototype";
+  team: string;
+  outcome: { value: string; label: string };
+  cover: { src: string; alt: string; mobile?: boolean };
+  screenshots: { src: string; caption: string; width: number; height: number; placeholder?: boolean }[];
+  demo: { src?: string; poster: string };
   liveUrl?: string;
   sourceUrl?: string;
 };
@@ -29,4 +34,7 @@ export type Experience = {
   location: string;
   description: string;
   highlights: string[];
+  stack: string[];
+  quality: string;
+  products: { name: string; url: string }[];
 };

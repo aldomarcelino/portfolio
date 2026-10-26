@@ -4,6 +4,7 @@ import { profile } from "@/data/profile";
 import { seo } from "@/data/seo";
 import { siteUrl, isIndexable } from "@/lib/site-url";
 import "./globals.css";
+import "./editorial.css";
 const manrope = localFont({
   src: "../../node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2",
   variable: "--font-manrope",
@@ -82,18 +83,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="dark"
+      data-theme="light"
       className={`${manrope.variable} ${editorial.variable}`}
       suppressHydrationWarning
     >
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var t;try{t=localStorage.getItem('portfolio-theme')}catch(e){}document.documentElement.dataset.theme=t==='dark'||t==='light'?t:'dark'})()`,
+            __html: `(function(){var t;try{t=localStorage.getItem('portfolio-editorial-theme')}catch(e){}document.documentElement.dataset.theme=t==='dark'||t==='light'?t:'light'})()`,
           }}
         />
       </head>
-      <body>{children}</body>
+      <body className="editorial">{children}</body>
     </html>
   );
 }

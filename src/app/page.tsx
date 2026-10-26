@@ -1,7 +1,6 @@
 import { StructuredData } from "@/components/structured-data";
 import { AboutSignature } from "@/components/about-signature";
 import { HeroHeadline } from "@/components/hero-headline";
-import { HeroAtmosphere } from "@/components/hero-atmosphere";
 import { ExperienceList } from "@/components/experience-list";
 import { Navigation } from "@/components/navigation";
 import { Enhancements } from "@/components/enhancements";
@@ -47,13 +46,12 @@ export default function Home() {
       <Navigation />
       <main id="main">
         <section className="hero section-shell" id="home">
-          <HeroAtmosphere />
           <div className="hero-grid">
             <div className="hero-copy">
               <HeroHeadline />
               <p className="hero-lead entrance delay-two">
-                I’m Aldo Marcelino, a full-stack software engineer turning complex
-                problems into software that feels simple.
+                I’m Aldo Marcelino, a full-stack software engineer turning
+                complex problems into software that feels simple.
               </p>
               <p className="hero-description entrance delay-two">
                 {profile.summary}
@@ -91,7 +89,10 @@ export default function Home() {
             <span className="micro">PORTFOLIO — 2026</span>
           </div>
         </section>
-        <section className="work-section section-shell section-scene" id="projects">
+        <section
+          className="work-section section-shell section-scene"
+          id="projects"
+        >
           <div className="section-heading" data-reveal>
             <div>
               <span className="section-kicker">01 / SELECTED WORK</span>
@@ -102,9 +103,9 @@ export default function Home() {
               </h2>
             </div>
             <p>
-              A selection of projects exploring
-              <br className="desktop-break" /> the space between product and
-              engineering.
+              Independent products, client collaborations,
+              <br className="desktop-break" /> and ideas brought to life with a
+              team.
             </p>
           </div>
           <div className="project-grid">
@@ -113,12 +114,15 @@ export default function Home() {
             ))}
           </div>
           <p className="work-footnote">
-            <span className="tiny-cross">+</span> A closer look at the work.
-            More case studies to come.
+            <span className="tiny-cross">+</span> From paying customers to
+            community projects. Built with people, for people.
           </p>
         </section>
         <FreeTools />
-        <section className="approach-section section-shell section-scene" id="approach">
+        <section
+          className="approach-section section-shell section-scene"
+          id="approach"
+        >
           <div className="section-heading" data-reveal>
             <div>
               <span className="section-kicker">03 / THE WAY I WORK</span>
@@ -135,8 +139,14 @@ export default function Home() {
             </p>
           </div>
           <div className="approach-grid">
-            {approach.map((a) => (
+            {approach.map((a, index) => (
               <article className="approach-card" data-reveal key={a.title}>
+                <div className="approach-card-heading">
+                  <span className="approach-step">0{index + 1}</span>
+                  <span className="approach-category">
+                    {a.label.split(" / ")[1]}
+                  </span>
+                </div>
                 <div className={`approach-art ${a.art}`} aria-hidden="true">
                   {a.art === "product" ? (
                     <>
@@ -165,14 +175,16 @@ export default function Home() {
                     </>
                   )}
                 </div>
-                <span className="micro">{a.label}</span>
                 <h3>{a.title}</h3>
                 <p>{a.description}</p>
               </article>
             ))}
           </div>
         </section>
-        <section className="experience-section section-shell section-scene" id="experience">
+        <section
+          className="experience-section section-shell section-scene"
+          id="experience"
+        >
           <div className="experience-intro" data-reveal>
             <span className="section-kicker">04 / EXPERIENCE</span>
             <h2>
@@ -195,7 +207,10 @@ export default function Home() {
           </div>
           <ExperienceList items={experiences} />
         </section>
-        <section className="about-section section-shell section-scene" id="about">
+        <section
+          className="about-section section-shell section-scene"
+          id="about"
+        >
           <AboutSignature />
           <div className="about-copy" data-reveal>
             <h2>
@@ -233,7 +248,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="contact-section section-shell section-scene" id="contact">
+        <section
+          className="contact-section section-shell section-scene"
+          id="contact"
+        >
           <div className="contact-top" data-reveal>
             <span className="section-kicker">06 / WHAT’S NEXT?</span>
             <span className="micro">

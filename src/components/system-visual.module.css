@@ -1,57 +1,286 @@
-.visual { width: 100%; max-width: 470px; margin: auto; padding-top: 16px; }
-.header { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 9px; font-weight: 600; letter-spacing: 1.5px; }
-.status { display: inline-flex; align-items: center; gap: 6px; font-size: 8px; letter-spacing: 1px; }
-.status i, .cardDot { width: 5px; height: 5px; border-radius: 50%; background: var(--lime); }
-.deck { position: relative; height: 408px; margin: 30px 0 16px; isolation: isolate; overflow: clip; }
-.card {
-  position: absolute; inset: 24px 0 auto; width: min(76%, 308px); min-height: 336px; margin-inline: auto; padding: 24px;
-  border: 1px solid var(--plane-line); border-radius: 22px; background: var(--surface); box-shadow: 0 16px 32px #00000018;
-  transform-origin: 50% 85%;
-  transform: translate(calc(var(--position) * 17px), calc(var(--position) * -12px)) rotate(calc(var(--position) * 5deg)) scale(calc(1 - var(--position) * 0.035));
-  z-index: calc(3 - var(--position));
-  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1), border-color 650ms;
+.visual {
+  width: 100%;
+  max-width: 470px;
+  margin: auto;
+  padding-top: 16px;
 }
-.card[data-front="true"] { border-color: var(--lime); background: linear-gradient(145deg, color-mix(in srgb, var(--lime) 7%, var(--surface)), var(--surface) 65%); }
-.cardTop, .cardBottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-family: monospace; font-size: 8px; letter-spacing: 1px; color: var(--muted); }
-.symbol { display: grid; place-items: center; width: 58px; height: 58px; margin: 26px 0 20px; border: 1px solid var(--line); border-radius: 14px; color: var(--lime); font-family: monospace; font-size: 23px; letter-spacing: -2px; }
-.card h3 { font-size: clamp(24px, 2.5vw, 32px); font-weight: 500; letter-spacing: -1.2px; line-height: 1.2; }
-.card h3 > span { color: var(--lime); }
-.card p { min-height: 40px; margin-top: 10px; font-size: 11px; line-height: 1.8; max-width: 230px; }
-.stack { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 20px 0 24px; list-style: none; }
-.stack li { padding: 5px 8px; border: 1px solid var(--line); border-radius: 6px; font-size: 10px; color: var(--text-secondary); }
-.cardBottom { border-top: 1px solid var(--line); padding-top: 14px; font-size: 7px; }
-.cardBottom > span:last-child { color: var(--lime); font-size: 16px; }
-.outgoing { animation: shuffle 700ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text);
+  font-size: 13px;
+  letter-spacing: -0.2px;
+}
+
+.status {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.deck {
+  position: relative;
+  height: 498px;
+  margin: 28px 0 12px;
+  isolation: isolate;
+  overflow: clip;
+}
+
+.card {
+  --ticket-bg: var(--surface);
+  --ticket-ink: var(--text);
+  --ticket-muted: var(--muted);
+  --ticket-line: var(--line);
+  position: absolute;
+  inset: 36px 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: min(76%, 320px);
+  min-height: 416px;
+  margin-inline: auto;
+  color: var(--ticket-ink);
+  background: var(--ticket-bg);
+  border: 1px solid var(--ticket-line);
+  border-radius: 12px;
+  transform-origin: 50% 85%;
+  transform: translate(calc(var(--position) * 16px), calc(var(--position) * -11px)) rotate(calc(var(--position) * 5deg)) scale(calc(1 - var(--position) * 0.035));
+  z-index: calc(3 - var(--position));
+  transition:
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 400ms ease,
+    color 400ms ease,
+    border-color 400ms ease;
+  mask:
+    radial-gradient(circle 9px at left calc(100% - 80px), transparent 98%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle 9px at right calc(100% - 80px), transparent 98%, #000) right / 51% 100% no-repeat;
+}
+
+.card[data-front="true"] {
+  --ticket-bg: var(--text);
+  --ticket-ink: var(--bg);
+  --ticket-muted: color-mix(in srgb, var(--ticket-ink) 65%, transparent);
+  --ticket-line: color-mix(in srgb, var(--ticket-ink) 24%, transparent);
+}
+
+.ticketBody {
+  flex: 1;
+  padding: 22px 24px 24px;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 7px;
+  line-height: 1.35;
+  letter-spacing: 0.8px;
+  font-weight: 650;
+}
+
+.brand svg {
+  width: 30px;
+  height: 26px;
+}
+
+.passLabel {
+  color: var(--ticket-muted);
+  font: 7px/1.7 var(--font-sans);
+  letter-spacing: 1px;
+  text-align: right;
+}
+
+.passLabel b {
+  color: var(--ticket-ink);
+  font-weight: 500;
+}
+
+.ticketArt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 134px;
+  margin-block: 12px 8px;
+  overflow: hidden;
+}
+
+.number {
+  font-size: 116px;
+  font-weight: 750;
+  line-height: 1;
+  letter-spacing: -10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.artArrow {
+  align-self: flex-end;
+  margin-bottom: 12px;
+  font-size: 76px;
+  font-weight: 200;
+  line-height: 1;
+  color: var(--ticket-muted);
+}
+
+.card h3 {
+  font-size: clamp(25px, 2.9vw, 36px);
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+}
+
+.card p {
+  min-height: 42px;
+  max-width: 230px;
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--ticket-muted);
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stack li {
+  font-size: 10px;
+  color: var(--ticket-ink);
+}
+
+.stub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  height: 80px;
+  flex-shrink: 0;
+  padding: 16px 24px;
+  border-top: 1px dashed var(--ticket-line);
+}
+
+.stubCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.stubCopy > span {
+  font-size: 6px;
+  line-height: 1.4;
+  letter-spacing: 0.6px;
+  color: var(--ticket-muted);
+}
+
+.stubCopy > b {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+}
+
+.barcode {
+  width: 74px;
+  height: 30px;
+  flex-shrink: 0;
+  opacity: 0.85;
+  background: repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 3px, currentColor 3px 5px, transparent 5px 7px, currentColor 7px 8px, transparent 8px 12px);
+}
+
+.outgoing {
+  animation: shuffle 1000ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
 @keyframes shuffle {
   0% { transform: translate(0, 0) rotate(0); z-index: 4; }
-  45% { transform: translate(22%, -12px) rotate(10deg) scale(0.97); z-index: 4; }
-  46% { z-index: 0; }
-  100% { transform: translate(calc(var(--position) * 17px), calc(var(--position) * -12px)) rotate(calc(var(--position) * 5deg)) scale(calc(1 - var(--position) * 0.035)); z-index: 0; }
+  38%, 40% { transform: translate(32%, -8px) rotate(8deg) scale(0.98); z-index: 4; }
+  41% { z-index: 0; }
+  100% { transform: translate(calc(var(--position) * 16px), calc(var(--position) * -11px)) rotate(calc(var(--position) * 5deg)) scale(calc(1 - var(--position) * 0.035)); z-index: 0; }
 }
-.controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); padding-top: 8px; }
-.selectors { display: flex; flex: 1; gap: 4px; }
-.selectors button { flex: 1; min-height: 44px; padding: 8px 4px; background: transparent; color: var(--muted); font-size: 10px; border-bottom: 1px solid transparent; }
-.selectors button[aria-pressed="true"] { color: var(--lime); border-color: var(--lime); }
-.selectors button:hover { color: var(--text); }
-.caption { margin-top: 12px; font-size: 11px; text-align: center; }
-@media (max-width: 1100px) and (min-width: 801px) {
-  .card { padding: 20px; width: 80%; }
-  .header { font-size: 8px; letter-spacing: 1px; }
-  .status { font-size: 7px; }
+
+.controls {
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
 }
+
+.selectors {
+  display: flex;
+  gap: 4px;
+}
+
+.selectors button {
+  flex: 1;
+  min-height: 44px;
+  padding: 8px 4px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+  border-bottom: 1px solid transparent;
+}
+
+.selectors button[aria-pressed="true"] {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+.selectors button:hover {
+  color: var(--text);
+}
+
+.caption {
+  margin-top: 12px;
+  font-size: 12px;
+  text-align: center;
+}
+
 @media (max-width: 600px) {
-  .visual { max-width: 370px; }
-  .deck { margin-top: 24px; }
-  .card { width: 72%; padding: 20px; }
-  .card h3 { font-size: 28px; }
-  .deck { height: 440px; }
-  .card { min-height: 368px; }
-  .card p { min-height: 60px; font-size: 12px; }
-  .stack li { font-size: 11px; }
-  .header { font-size: 9px; letter-spacing: 1px; }
-  .selectors button { font-size: 12px; }
+  .visual { max-width: 390px; }
+  .header { font-size: 12px; }
+  .card { width: 76%; }
+  .ticketBody { padding: 20px; }
+  .number { font-size: 96px; letter-spacing: -8px; }
+  .artArrow { font-size: 58px; }
+  .ticketArt { height: 116px; }
+  .card h3 { font-size: 27px; }
+  .card p { font-size: 12px; min-height: 60px; }
+  .stub { padding-inline: 20px; gap: 12px; }
+  .barcode { width: 52px; height: 26px; }
+  .stack { gap: 6px 10px; }
 }
+
 @media (prefers-reduced-motion: reduce) {
   .card { transition: none; }
   .outgoing { animation: none; }
+}
+
+@media (min-width: 961px) {
+  .visual { padding-top: 0; }
+  .deck { height: 396px; margin-block: 16px 8px; }
+  .card {
+    min-height: 348px;
+    mask:
+      radial-gradient(circle 9px at left calc(100% - 64px), transparent 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle 9px at right calc(100% - 64px), transparent 98%, #000) right / 51% 100% no-repeat;
+  }
+  .ticketBody { padding: 16px 22px 20px; }
+  .ticketArt { height: 86px; margin-block: 8px; }
+  .number { font-size: 88px; letter-spacing: -7px; }
+  .artArrow { font-size: 58px; margin-bottom: 4px; }
+  .card h3 { font-size: 30px; }
+  .card p { min-height: 40px; }
+  .stack { margin-top: 14px; }
+  .stub { height: 64px; padding-block: 12px; }
+  .barcode { height: 24px; }
+  .caption { margin-top: 8px; }
 }

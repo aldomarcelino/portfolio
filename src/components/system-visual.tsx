@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useSyncExternalStore, type CSSProperties } from "react";
 import styles from "./system-visual.module.css";
+import { Mark } from "./icons";
 
 const layers = [
   { name: "Interface", caption: "Where people meet the product.", description: "Thoughtful interfaces. Responsive experiences.", stack: ["React", "Next.js", "Vue"], symbol: "</>", detail: "DESIGN → EXPERIENCE" },
@@ -19,30 +20,38 @@ const getServerPreference = () => false;
 export function SystemVisual() {
   const [active, setActive] = useState(0);
   const [outgoing, setOutgoing] = useState<number | null>(null);
+  const [shuffleTarget, setShuffleTarget] = useState<number | null>(null);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const reduced = useSyncExternalStore(subscribeToMotion, getMotionPreference, getServerPreference);
 
   useEffect(() => {
-    if (hovered || focused || reduced) return;
+    if (hovered || focused || reduced || shuffleTarget !== null) return;
     const timer = window.setInterval(() => {
       if (document.hidden) return;
       setOutgoing(active);
-      setActive((active + 1) % layers.length);
+      setShuffleTarget((active + 1) % layers.length);
     }, 5000);
     return () => window.clearInterval(timer);
-  }, [active, hovered, focused, reduced]);
+  }, [active, hovered, focused, reduced, shuffleTarget]);
 
   useEffect(() => {
-    if (outgoing === null) return;
-    const timer = window.setTimeout(() => setOutgoing(null), 700);
-    return () => window.clearTimeout(timer);
-  }, [outgoing]);
+    if (shuffleTarget === null) return;
+    const advance = window.setTimeout(() => setActive(shuffleTarget), reduced ? 0 : 400);
+    const settle = window.setTimeout(() => {
+      setOutgoing(null);
+      setShuffleTarget(null);
+    }, reduced ? 0 : 1000);
+    return () => {
+      window.clearTimeout(advance);
+      window.clearTimeout(settle);
+    };
+  }, [shuffleTarget, reduced]);
 
   function select(index: number) {
-    if (index === active || outgoing !== null) return;
+    if (index === active || shuffleTarget !== null) return;
     setOutgoing(active);
-    setActive(index);
+    setShuffleTarget(index);
   }
 
   return (
@@ -50,21 +59,34 @@ export function SystemVisual() {
       onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
       onFocusCapture={() => setFocused(true)}
       onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
-      <div className={styles.header}><span>A SYSTEM OF INTENT</span><span className={styles.status}><i /> FULL STACK</span></div>
+      <div className={styles.header}><span>A system of intent.</span><span className={styles.status}>My toolkit</span></div>
       <div className={styles.deck}>
         {layers.map((layer, index) => {
           const position = (index - active + layers.length) % layers.length;
           return (
             <article key={layer.name} className={`${styles.card} ${outgoing === index ? styles.outgoing : ""}`}
-              style={{ "--position": position } as CSSProperties} data-front={position === 0} aria-hidden={position !== 0}>
-              <div className={styles.cardTop}><span>0{index + 1} / THE STACK</span><span className={styles.cardDot} /></div>
-              <div className={styles.symbol} aria-hidden="true">{layer.symbol}</div>
-              <h3>{layer.name}<span>.</span></h3>
-              <p>{layer.description}</p>
-              <ul className={styles.stack} aria-label={`${layer.name} technologies`}>
-                {layer.stack.map((technology) => <li key={technology}>{technology}</li>)}
-              </ul>
-              <div className={styles.cardBottom}><span>{layer.detail}</span><span aria-hidden="true">↗</span></div>
+              style={{ "--position": position } as CSSProperties} data-front={position === 0 || outgoing === index} aria-hidden={position !== 0}>
+              <div className={styles.ticketBody}>
+                <div className={styles.cardTop}>
+                  <span className={styles.brand}><Mark /><span>ALDO<br />MARCELINO</span></span>
+                  <span className={styles.passLabel}>THE STACK<br /><b>FULL ACCESS</b></span>
+                </div>
+                <div className={styles.ticketArt} aria-hidden="true">
+                  <span className={styles.number}>0{index + 1}</span>
+                  <span className={styles.artArrow}>↗</span>
+                </div>
+                <div className={styles.cardCopy}>
+                  <h3>{layer.name}</h3>
+                  <p>{layer.description}</p>
+                </div>
+                <ul className={styles.stack} aria-label={`${layer.name} technologies`}>
+                  {layer.stack.map((technology) => <li key={technology}>{technology}</li>)}
+                </ul>
+              </div>
+              <div className={styles.stub}>
+                <div className={styles.stubCopy}><span>{layer.detail}</span><b>AL1 — 00{index + 1}</b></div>
+                <span className={styles.barcode} aria-hidden="true" />
+              </div>
             </article>
           );
         })}

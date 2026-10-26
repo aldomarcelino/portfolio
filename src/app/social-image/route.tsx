@@ -13,8 +13,8 @@ export function GET() {
         flexDirection: "column",
         justifyContent: "space-between",
         padding: "58px 68px",
-        background: "#131512",
-        color: "#efefe7",
+        background: "#fdfdfb",
+        color: "#181818",
         fontFamily: "sans-serif",
         position: "relative",
         overflow: "hidden",
@@ -28,18 +28,18 @@ export function GET() {
           width: 700,
           height: 700,
           borderRadius: "50%",
-          background: "radial-gradient(circle, #344427 0%, #131512 68%)",
+          background: "radial-gradient(circle, #eeeee9 0%, #fdfdfb 68%)",
           display: "flex",
         }}
       />
       <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-        <svg width="80" height="60" viewBox="0 0 48 36" fill="none">
-          <g stroke="#d2f780" strokeWidth="3" strokeLinecap="square">
-            <path d="M4 28 13 7l9 21M8 20h10" />
-            <path d="M28 7v21h4" />
-            <path d="m37 12 5-4v20m-5 0h10" />
-            <path d="M37 33h10" strokeWidth="1.5" opacity=".55" />
+        <svg width="80" height="60" viewBox="0 0 72 48" fill="none">
+          <g stroke="#181818" strokeWidth="3.4" strokeLinecap="square" strokeLinejoin="miter">
+            <path d="M4 37 15 9l11 28M9 26h12" />
+            <path d="M33 9v28h14" />
+            <path d="m53 15 8-6v27" />
           </g>
+          <ellipse cx="55.5" cy="36" rx="6" ry="3.8" transform="rotate(-20 55.5 36)" fill="#181818" />
         </svg>
         <div style={{ fontSize: 26, letterSpacing: -1, display: "flex" }}>
           {profile.name}
@@ -58,7 +58,7 @@ export function GET() {
             display: "flex",
             fontSize: 17,
             letterSpacing: 4,
-            color: "#abb69c",
+            color: "#666663",
           }}
         >
           SOFTWARE ENGINEER / FULL STACK
@@ -79,7 +79,7 @@ export function GET() {
             fontSize: 83,
             lineHeight: 1.08,
             letterSpacing: -4,
-            color: "#d2f780",
+            color: "#181818",
           }}
         >
           Thoughtful products.
@@ -90,10 +90,10 @@ export function GET() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          borderTop: "1px solid #3a4331",
+          borderTop: "1px solid #d8d8d3",
           paddingTop: 24,
           fontSize: 19,
-          color: "#b6c0a9",
+          color: "#666663",
         }}
       >
         <div style={{ display: "flex" }}>Next.js · TypeScript · NestJS</div>

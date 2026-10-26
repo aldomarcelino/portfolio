@@ -129,7 +129,7 @@ export function AboutSignature() {
               ? "Do · C4"
               : sound === "error"
                 ? "Try playing again"
-                : "Click to hear do"}
+                : "Play the note"}
         </span>
       </button>
       <a
@@ -152,7 +152,7 @@ export function AboutSignature() {
           <Mark />
         </span>
         <div className="monogram-orbit" />
-        <small>AL + 1 (DO) / ALDO</small>
+        <small>AL1 / ALDO MARCELINO</small>
       </div>
     </div>
   );

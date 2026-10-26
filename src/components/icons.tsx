@@ -24,33 +24,31 @@ export function Arrow({
     </svg>
   );
 }
-/** Al + 1 (do): a geometric A, a lowercase l, and the first scale degree. */
+/** AL + 1 (do): uppercase initials and the first scale degree. */
+export function BrandGlyph({ color = "currentColor" }: { color?: string }) {
+  return (
+    <>
+      <g stroke={color} strokeWidth="3.4" strokeLinecap="square" strokeLinejoin="miter">
+        <path d="M4 37 15 9l11 28M9 26h12" />
+        <path d="M33 9v28h14" />
+        <path d="m53 15 8-6v27" />
+      </g>
+      <ellipse cx="55.5" cy="36" rx="6" ry="3.8" transform="rotate(-20 55.5 36)" fill={color} />
+    </>
+  );
+}
+
 export function Mark() {
   return (
     <svg
       className="brand-mark"
-      width="44"
-      height="32"
-      viewBox="0 0 48 36"
+      width="48"
+      height="36"
+      viewBox="0 0 72 48"
       fill="none"
       aria-hidden="true"
     >
-      <g
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="square"
-        strokeLinejoin="miter"
-      >
-        <path d="M4 28 13 7l9 21M8 20h10" />
-        <path d="M28 7v21h4" />
-        <path d="m37 12 5-4v20m-5 0h10" />
-      </g>
-      <path
-        d="M37 33h10"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        opacity=".55"
-      />
+      <BrandGlyph />
     </svg>
   );
 }
