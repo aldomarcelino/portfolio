@@ -193,8 +193,8 @@ export default function Home() {
               Real <em>challenges.</em>
             </h2>
             <p>
-              Building web applications across SaaS, fintech, and cloud
-              platforms.
+              Building web applications for teams, businesses, and the people
+              they serve.
             </p>
             <a
               href={profile.resume}
@@ -223,16 +223,16 @@ export default function Home() {
               And how they feel to use.
             </p>
             <p>
-              I’m a full-stack engineer based in Jakarta, building production
-              web applications for SaaS and fintech. My work moves between
-              frontend details and backend architecture, with an eye on the
-              experience they create together.
+              I’m a full-stack software engineer based in Jakarta, with experience
+              building SaaS platforms, business applications, and cloud service
+              interfaces. My work connects user interfaces, backend services, and
+              the integrations that keep products running.
             </p>
             <p>
-              I’ve collaborated remotely with Singapore-based teams, built
-              reusable interface systems, and connected services through APIs.
-              I’m continuing to explore system design, cloud infrastructure, and
-              distributed systems.
+              Alongside my professional work, I build products with small teams
+              and collaborate on client and community projects. I enjoy
+              understanding what people need, working through the details, and
+              turning an idea into something useful.
             </p>
             <div className="skill-groups">
               {profile.skills.map((g) => (

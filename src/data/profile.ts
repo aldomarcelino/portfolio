@@ -5,7 +5,7 @@ export const profile: Profile = {
   email: "aldo115marcelino@gmail.com",
   location: "Jakarta, Indonesia",
   summary:
-    "I build web applications from interface to infrastructure, with a focus on maintainable code, considered user experiences, and real-world impact.",
+    "I build web applications across frontend and backend, from SaaS platforms to products built with small teams. I focus on clear interfaces, reliable services, and maintainable code.",
   resume: "/Aldo-Marcelino-CV.pdf",
   socials: [
     { label: "GitHub", url: "https://github.com/aldomarcelino" },
@@ -24,8 +24,12 @@ export const profile: Profile = {
       items: ["Node.js", "NestJS", "Go", "GraphQL", "REST APIs"],
     },
     {
-      category: "Data & delivery",
-      items: ["PostgreSQL", "MongoDB", "MySQL", "Redis", "Docker"],
+      category: "Databases",
+      items: ["PostgreSQL", "MongoDB", "MySQL", "Redis"],
+    },
+    {
+      category: "Cloud & delivery",
+      items: ["AWS", "GCP", "BytePlus", "Vercel", "Docker"],
     },
   ],
 };
