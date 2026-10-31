@@ -7,6 +7,7 @@ import { Enhancements } from "@/components/enhancements";
 import { SystemVisual } from "@/components/system-visual";
 import { ProjectCard } from "@/components/project-card";
 import { FreeTools } from "@/components/free-tools";
+import { ContactHeadline } from "@/components/contact-headline";
 import { Arrow, Mark } from "@/components/icons";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
@@ -259,11 +260,7 @@ export default function Home() {
             </span>
           </div>
           <div className="contact-main" data-reveal>
-            <h2>
-              Have something
-              <br />
-              in <em>mind?</em>
-            </h2>
+            <ContactHeadline email={profile.email} />
             <a
               className="contact-arrow"
               href={`mailto:${profile.email}`}

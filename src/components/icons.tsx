@@ -24,16 +24,15 @@ export function Arrow({
     </svg>
   );
 }
-/** AL + 1 (do): uppercase initials and the first scale degree. */
+/** AL + 1 (do): the L shares its stem with 1 and ends in a note head. */
 export function BrandGlyph({ color = "currentColor" }: { color?: string }) {
   return (
     <>
       <g stroke={color} strokeWidth="3.4" strokeLinecap="square" strokeLinejoin="miter">
-        <path d="M4 37 15 9l11 28M9 26h12" />
-        <path d="M33 9v28h14" />
-        <path d="m53 15 8-6v27" />
+        <path d="M8 37 20 10l12 27M13 26h14" />
+        <path d="m32 16 8-6v27h14" />
       </g>
-      <ellipse cx="55.5" cy="36" rx="6" ry="3.8" transform="rotate(-20 55.5 36)" fill={color} />
+      <ellipse cx="35" cy="37" rx="6" ry="3.8" transform="rotate(-20 35 37)" fill={color} />
     </>
   );
 }
@@ -44,7 +43,7 @@ export function Mark() {
       className="brand-mark"
       width="48"
       height="36"
-      viewBox="0 0 72 48"
+      viewBox="0 0 64 48"
       fill="none"
       aria-hidden="true"
     >

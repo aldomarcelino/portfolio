@@ -71,18 +71,28 @@ body.editorial {
 
 .editorial .site-header {
   border-bottom: 0;
-  --mobile-header-height: 88px;
+  --mobile-header-height: 72px;
 }
 
 .editorial .site-header .nav-shell {
   max-width: 1600px;
-  height: 88px;
+  height: 72px;
   padding-inline: max(4%, calc((100% - 1440px) / 2));
 }
 
 .editorial .site-header .wordmark {
   font-size: 18px;
   letter-spacing: -0.8px;
+}
+
+.editorial .site-header .wordmark > .brand-mark {
+  width: 36px;
+  height: 36px;
+  padding: 4px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: #181818;
+  color: #ffffff;
 }
 
 .editorial .site-header .desktop-nav {
@@ -252,6 +262,7 @@ body.editorial {
 }
 
 .editorial main > #tools.section-scene {
+  padding-block: clamp(48px, 5vw, 64px);
   background: var(--chapter-base);
 }
 
@@ -356,12 +367,19 @@ body.editorial {
 }
 
 @media (max-width: 600px) {
+  .editorial .site-header .wordmark > .brand-mark {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    border-radius: 5px;
+  }
+
   .editorial .site-header {
-    --mobile-header-height: 64px;
+    --mobile-header-height: 56px;
   }
 
   .editorial .site-header .nav-shell {
-    height: 64px;
+    height: 56px;
     padding-inline: 5%;
     gap: 4px;
   }
@@ -442,7 +460,7 @@ body.editorial {
 /* One viewport on laptops, with natural document flow on smaller screens. */
 @media (min-width: 961px) {
   .editorial main > .hero.section-shell {
-    min-height: calc(100svh - 88px);
+    min-height: calc(100svh - 72px);
     display: grid;
     grid-template-rows: 1fr auto;
     padding-top: 16px;

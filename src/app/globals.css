@@ -1206,7 +1206,11 @@ details[open] > .project-details summary > span {
   align-items: center;
   justify-content: center;
   margin-top: 45px;
-  background: radial-gradient(ellipse, #879c3b13, transparent 65%);
+  background: radial-gradient(
+    ellipse,
+    color-mix(in srgb, var(--text) 6%, transparent),
+    transparent 65%
+  );
 }
 .monogram > span {
   font-family: var(--font-serif);
@@ -1219,7 +1223,7 @@ details[open] > .project-details summary > span {
   position: absolute;
   width: 220px;
   height: 220px;
-  border: 1px solid #59644466;
+  border: 1px solid var(--line);
   border-radius: 50%;
   transform: scaleY(0.65) rotate(-32deg);
 }
@@ -1229,10 +1233,10 @@ details[open] > .project-details summary > span {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--lime);
+  background: var(--text);
   top: 28px;
   left: 30px;
-  box-shadow: 0 0 20px #d2f78044;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--text) 15%, transparent);
 }
 .monogram small {
   position: absolute;
@@ -3461,7 +3465,7 @@ section[id] {
   opacity: 0;
   background: radial-gradient(
     circle 150px at var(--music-x, -999px) var(--music-y, -999px),
-    color-mix(in srgb, var(--aura) 10%, transparent),
+    color-mix(in srgb, var(--text) 5%, transparent),
     transparent
   );
   mask-image: radial-gradient(
@@ -3479,7 +3483,7 @@ section[id] {
   display: block;
   width: 100%;
   height: 100%;
-  color: var(--lime);
+  color: var(--text);
 }
 .music-staff {
   stroke: currentColor;
@@ -3537,7 +3541,7 @@ section[id] {
 }
 .music-play-area:is(:hover, :focus-visible) .music-play-hint,
 .music-play-area[data-playing="true"] .music-play-hint {
-  color: var(--lime);
+  color: var(--text);
 }
 .music-equalizer {
   display: inline-flex;
@@ -3575,7 +3579,7 @@ section[id] {
   align-items: center;
 }
 .music-credit:hover {
-  color: var(--lime);
+  color: var(--text);
 }
 .about-signature:has(.music-play-area:focus-visible) .about-music-field {
   opacity: 1;

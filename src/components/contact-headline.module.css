@@ -1,0 +1,36 @@
+.heading {
+  min-width: 0;
+}
+
+.link {
+  display: block;
+  color: inherit;
+}
+
+.line {
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  padding-block: 0.08em;
+  margin-block: -0.08em;
+}
+
+.reserve,
+.display {
+  grid-area: 1 / 1;
+  white-space: pre;
+}
+
+.reserve {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.smaller {
+  font-size: 0.85em;
+}
+
+.link:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 8px;
+}
