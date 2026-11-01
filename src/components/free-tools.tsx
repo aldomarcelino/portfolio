@@ -14,7 +14,7 @@ export function FreeTools() {
           </div>
           <div className={styles.intro}>
             <h3>Ramupod<span>.</span></h3>
-            <p>A little help for your daily development workflow. Format data, compare changes, and turn requests into code.</p>
+            <p>A purpose-built toolkit for modern builders. Record tabs, transcribe voice, compress assets, and debug web applications locally.</p>
             <a className={styles.cta} href={developerToolsUrl} target="_blank" rel="noopener noreferrer">
               Explore Ramupod <Arrow diagonal />
             </a>
