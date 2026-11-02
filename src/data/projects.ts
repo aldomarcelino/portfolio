@@ -90,16 +90,16 @@ export const projects: Project[] = [
     team: "Built with friends",
     status: "Prototype",
     description:
-      "Giving good food another chance. A mobile marketplace for discovering discounted surplus food and helping sellers reduce waste.",
+      "A mobile marketplace I built with React Native and Expo, helping people discover discounted surplus food and sellers reduce waste.",
     outcome: { value: "Less waste", label: "a working mobile prototype, ready to demo" },
-    stack: ["React", "Expo", "Node.js", "Redux", "Xendit API"],
+    stack: ["React Native", "Expo", "Node.js", "Redux", "Xendit API"],
     cover: { src: "/projects/savvie/cover.webp", alt: "Frame from the Savvie demo showing nearby discounted meals", mobile: true },
     screenshots: [
       { src: "/projects/savvie/screen-1.webp", caption: "Mobile app screenshots", width: 720, height: 1560, placeholder: true },
     ],
     demo: { src: "/projects/savvie/demo.mp4", poster: "/projects/savvie/cover.webp" },
     details: [
-      "Built with friends as a food rescue marketplace connecting sellers with people looking for lower-priced meals.",
+      "Developed the mobile application with React Native and Expo, collaborating with friends on a food rescue marketplace connecting sellers with people looking for lower-priced meals.",
       "The app focuses on surplus food and products approaching their expiry date.",
       "Not yet published. A local build and a recorded product walkthrough are available.",
     ],

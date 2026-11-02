@@ -45,9 +45,7 @@ export function Navigation() {
           onClick={() => setOpen(false)}
         >
           <Mark />
-          <span>
-            Aldo Marcelino<span className="lime">.</span>
-          </span>
+          <span>Aldo Marcelino</span>
         </a>
         <div className="desktop-nav">
           {links.map((label) => (

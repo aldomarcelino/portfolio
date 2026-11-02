@@ -31,8 +31,8 @@ const editorial = localFont({
 const socialImage = siteUrl
   ? {
       url: new URL(seo.imagePath, siteUrl).href,
-      width: 1200,
-      height: 630,
+      width: seo.imageWidth,
+      height: seo.imageHeight,
       alt: seo.imageAlt,
     }
   : undefined;

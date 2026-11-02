@@ -3,6 +3,15 @@ import { seo } from "@/data/seo";
 import { siteUrl } from "@/lib/site-url";
 
 export function StructuredData() {
+  const image = siteUrl
+    ? {
+        "@type": "ImageObject",
+        url: new URL(seo.portraitPath, siteUrl).href,
+        width: 1792,
+        height: 2400,
+        caption: "Black-and-white illustrated portrait of Aldo Marcelino",
+      }
+    : undefined;
   const person = {
     "@type": "Person",
     ...(siteUrl ? { "@id": `${siteUrl.href}#person`, url: siteUrl.href } : {}),
@@ -10,6 +19,7 @@ export function StructuredData() {
     alternateName: [profile.name, "Aldo"],
     jobTitle: seo.role,
     description: seo.description,
+    ...(image ? { image } : {}),
     sameAs: profile.socials.map((link) => link.url),
     homeLocation: { "@type": "Place", name: profile.location },
     knowsAbout: profile.skills.flatMap((group) => group.items),
@@ -25,6 +35,7 @@ export function StructuredData() {
         name: seo.title,
         description: seo.description,
         inLanguage: "en",
+        ...(image ? { primaryImageOfPage: image } : {}),
         ...(siteUrl ? { isPartOf: { "@id": `${siteUrl.href}#website` } } : {}),
         mainEntity: person,
       },

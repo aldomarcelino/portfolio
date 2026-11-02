@@ -1,9 +1,15 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { profile } from "@/data/profile";
 
 export const dynamic = "force-static";
 
-export function GET() {
+export async function GET() {
+  const portrait = await readFile(
+    join(process.cwd(), "public/brand/aldo-portrait.png"),
+  );
+  const portraitSrc = `data:image/png;base64,${portrait.toString("base64")}`;
   return new ImageResponse(
     <div
       style={{
@@ -32,6 +38,20 @@ export function GET() {
           display: "flex",
         }}
       />
+      {/* ImageResponse needs a native img to embed the local portrait. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={portraitSrc}
+        alt="Illustrated portrait of Aldo Marcelino"
+        width={310}
+        height={415}
+        style={{
+          position: "absolute",
+          right: 68,
+          top: 78,
+          borderRadius: 18,
+        }}
+      />
       <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
         <svg width="80" height="60" viewBox="0 0 64 48" fill="none">
           <g stroke="#181818" strokeWidth="3.4" strokeLinecap="square" strokeLinejoin="miter">
@@ -50,6 +70,7 @@ export function GET() {
           flexDirection: "column",
           gap: 10,
           marginTop: 22,
+          width: 700,
         }}
       >
         <div
@@ -65,9 +86,9 @@ export function GET() {
         <div
           style={{
             display: "flex",
-            fontSize: 83,
+            fontSize: 64,
             lineHeight: 1.08,
-            letterSpacing: -4,
+            letterSpacing: -3,
           }}
         >
           Complex problems.
@@ -75,9 +96,9 @@ export function GET() {
         <div
           style={{
             display: "flex",
-            fontSize: 83,
+            fontSize: 64,
             lineHeight: 1.08,
-            letterSpacing: -4,
+            letterSpacing: -3,
             color: "#181818",
           }}
         >

@@ -42,11 +42,11 @@ The geometric `Al1` monogram spells Aldo as **Al + 1**, with **1 = do**, the fir
 
 ## SEO and launch configuration
 
-SEO copy is centralized in `src/data/seo.ts`. The portfolio includes server-rendered title/description and author metadata, Open Graph and Twitter cards, ProfilePage/Person JSON-LD based on verified profile data, a generated 1200 × 630 sharing image at `/social-image`, and Next.js metadata routes for `/robots.txt` and `/sitemap.xml`. The main variable font is self-hosted and preloaded through `next/font/local`; editorial fonts remain self-hosted and load only when needed.
+SEO copy is centralized in `src/data/seo.ts`. The portfolio includes server-rendered title/description and author metadata, Open Graph and Twitter cards, ProfilePage/Person JSON-LD based on verified profile data, and Next.js metadata routes for `/robots.txt` and `/sitemap.xml`. The 1200 × 630 social card at `/social-image` combines the editorial headline on the left with the supplied illustrated portrait on the right. Its lightweight PNG source is `public/brand/aldo-portrait.png`. The original portrait at `/aldomarcelino.webp` is used for the Person image and ProfilePage primary image, with its original 1792 × 2400 dimensions. The main variable font is self-hosted and preloaded through `next/font/local`; editorial fonts remain self-hosted and load only when needed.
 
 The canonical origin defaults to `https://aldomarcelino.com`, the purchased production domain. `SITE_URL` can override it when configured; remove any old Vercel hostname override from the hosting dashboard. Canonical metadata, social-image URLs, WebSite schema, and the sitemap use the same origin, including on preview deployments. Development and Vercel preview pages emit `noindex`; production pages allow indexing. Robots allows crawling so search engines can read these page-level directives.
 
-The visible primary heading identifies Aldo Marcelino as a Full Stack Engineer. The About section and search description include the supplied full name, Aldo Marcelino NF Lubis. Person structured data connects both names and the short name Aldo to the existing LinkedIn and GitHub profiles. The animated editorial tagline is decorative and does not replace the primary heading.
+The visible primary heading identifies Aldo Marcelino as a Full Stack Engineer. The About section and search description use Aldo Marcelino. Person structured data retains the full name, Aldo Marcelino NF Lubis, and connects both names and the short name Aldo to the existing LinkedIn and GitHub profiles. The animated editorial tagline is decorative and does not replace the primary heading.
 
 When a final domain is ready:
 
