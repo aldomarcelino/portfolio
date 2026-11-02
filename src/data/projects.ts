@@ -46,7 +46,7 @@ export const projects: Project[] = [
       { src: "/projects/reign-models/screen-4.webp", caption: "Discover the male roster", width: 1600, height: 1000 },
       { src: "/projects/reign-models/screen-2.webp", caption: "From discovery to a booking inquiry", width: 1600, height: 1000 },
     ],
-    demo: { poster: "/projects/reign-models/hero.webp" },
+    demo: { src: "/projects/reign-models/demo.mp4", poster: "/projects/reign-models/hero.webp" },
     details: [
       "Delivered for a client in collaboration with one fellow developer.",
       "Built a platform for exploring a roster of more than 25 models and submitting booking inquiries.",
@@ -75,7 +75,7 @@ export const projects: Project[] = [
       { src: "/projects/rumah-bisnis-mandiri/screen-6.webp", caption: "Adding a local product", width: 1600, height: 2159 },
       { src: "/projects/rumah-bisnis-mandiri/screen-7.webp", caption: "Managing local business owners", width: 1600, height: 1982 },
     ],
-    demo: { poster: "/projects/rumah-bisnis-mandiri/cover.webp" },
+    demo: { src: "/projects/rumah-bisnis-mandiri/demo.mp4", poster: "/projects/rumah-bisnis-mandiri/cover.webp" },
     details: [
       "Developed at the request of a campus team running a local small-business support programme.",
       "Provided product discovery, seller information, and tools for managing local product listings.",

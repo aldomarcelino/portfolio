@@ -2,6 +2,7 @@ export type SocialLink = { label: string; url: string };
 export type SkillGroup = { category: string; items: string[] };
 export type Profile = {
   name: string;
+  fullName: string;
   title: string;
   email: string;
   location: string;

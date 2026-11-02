@@ -140,6 +140,16 @@ body.editorial {
   margin-bottom: clamp(48px, 7vw, 100px);
 }
 
+.editorial .hero .hero-headline .hero-identity {
+  margin: 0 0 18px;
+  font-size: clamp(13px, 1.2vw, 16px);
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: normal;
+}
+
 .editorial .hero .hero-headline .rotating-headline {
   font-size: clamp(44px, 7.5vw, 108px);
   line-height: 1.02;

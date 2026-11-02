@@ -6,7 +6,8 @@ export function StructuredData() {
   const person = {
     "@type": "Person",
     ...(siteUrl ? { "@id": `${siteUrl.href}#person`, url: siteUrl.href } : {}),
-    name: profile.name,
+    name: profile.fullName,
+    alternateName: [profile.name, "Aldo"],
     jobTitle: seo.role,
     description: seo.description,
     sameAs: profile.socials.map((link) => link.url),
@@ -24,6 +25,7 @@ export function StructuredData() {
         name: seo.title,
         description: seo.description,
         inLanguage: "en",
+        ...(siteUrl ? { isPartOf: { "@id": `${siteUrl.href}#website` } } : {}),
         mainEntity: person,
       },
       ...(siteUrl
@@ -33,6 +35,7 @@ export function StructuredData() {
               "@id": `${siteUrl.href}#website`,
               url: siteUrl.href,
               name: profile.name,
+              alternateName: [profile.fullName, siteUrl.hostname],
               inLanguage: "en",
               publisher: { "@id": `${siteUrl.href}#person` },
             },

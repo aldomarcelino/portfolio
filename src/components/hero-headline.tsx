@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { headlines } from "@/data/headlines";
+import { profile } from "@/data/profile";
 
 function subscribeToMotion(callback: () => void) {
   const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -34,10 +35,8 @@ export function HeroHeadline() {
 
   return (
     <div className="hero-headline entrance delay-one" ref={container}>
-      <h1
-        className="rotating-headline"
-        aria-label="Aldo Marcelino, Full Stack Software Engineer. Complex problems. Thoughtful products."
-      >
+      <h1 className="hero-identity">{profile.name} — Full Stack Engineer</h1>
+      <div className="rotating-headline" aria-hidden="true">
         {headlines.map((headline, index) => (
           <span
             key={headline.lead}
@@ -50,7 +49,7 @@ export function HeroHeadline() {
             </span>
           </span>
         ))}
-      </h1>
+      </div>
 
     </div>
   );

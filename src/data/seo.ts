@@ -1,7 +1,7 @@
 export const seo = {
-  title: "Aldo Marcelino | Full Stack Software Engineer",
+  title: "Aldo Marcelino | Full Stack Engineer & Software Engineer",
   description:
-    "Aldo Marcelino is a Full Stack Software Engineer in Jakarta, building web applications with Next.js, TypeScript, React, and NestJS. Explore professional work, client collaborations, and independent products.",
+    "Aldo Marcelino NF Lubis is a Software Engineer and Full Stack Engineer in Jakarta. Explore projects built with React, Next.js, TypeScript, and NestJS.",
   role: "Full Stack Software Engineer",
   imagePath: "/social-image",
   imageAlt:

@@ -44,8 +44,8 @@ export const metadata: Metadata = {
   title: { default: seo.title, template: "%s | Aldo Marcelino" },
   description: seo.description,
   applicationName: "Aldo Marcelino — Portfolio",
-  authors: [{ name: profile.name, ...(siteUrl ? { url: siteUrl.href } : {}) }],
-  creator: profile.name,
+  authors: [{ name: profile.fullName, ...(siteUrl ? { url: siteUrl.href } : {}) }],
+  creator: profile.fullName,
   category: "Technology",
   openGraph: {
     title: seo.title,

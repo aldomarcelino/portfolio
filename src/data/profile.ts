@@ -1,6 +1,7 @@
 import type { Profile } from "./types";
 export const profile: Profile = {
   name: "Aldo Marcelino",
+  fullName: "Aldo Marcelino NF Lubis",
   title: "Software Engineer / Full Stack",
   email: "aldomarcelinolubis@gmail.com",
   location: "Jakarta, Indonesia",

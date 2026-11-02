@@ -44,12 +44,14 @@ The geometric `Al1` monogram spells Aldo as **Al + 1**, with **1 = do**, the fir
 
 SEO copy is centralized in `src/data/seo.ts`. The portfolio includes server-rendered title/description and author metadata, Open Graph and Twitter cards, ProfilePage/Person JSON-LD based on verified profile data, a generated 1200 × 630 sharing image at `/social-image`, and Next.js metadata routes for `/robots.txt` and `/sitemap.xml`. The main variable font is self-hosted and preloaded through `next/font/local`; editorial fonts remain self-hosted and load only when needed.
 
-On Vercel, the platform-provided `VERCEL_PROJECT_PRODUCTION_URL` supplies the stable production origin. `SITE_URL` overrides it when configured. No per-deployment preview hostname is used. Outside Vercel, until `SITE_URL` is configured, canonical URLs, absolute sharing-image metadata, WebSite schema, and sitemap URLs are omitted instead of inventing a domain or publishing localhost links. The empty sitemap is intentional. Development and Vercel preview pages emit `noindex`; production pages allow indexing. Robots allows crawling so search engines can read these page-level directives.
+The canonical origin defaults to `https://aldomarcelino.com`, the purchased production domain. `SITE_URL` can override it when configured; remove any old Vercel hostname override from the hosting dashboard. Canonical metadata, social-image URLs, WebSite schema, and the sitemap use the same origin, including on preview deployments. Development and Vercel preview pages emit `noindex`; production pages allow indexing. Robots allows crawling so search engines can read these page-level directives.
+
+The visible primary heading identifies Aldo Marcelino as a Full Stack Engineer. The About section and search description include the supplied full name, Aldo Marcelino NF Lubis. Person structured data connects both names and the short name Aldo to the existing LinkedIn and GitHub profiles. The animated editorial tagline is decorative and does not replace the primary heading.
 
 When a final domain is ready:
 
 1. Copy `.env.example` to `.env.local` for local production testing, or set the same variables in the hosting dashboard.
-2. Set `SITE_URL` to the final HTTPS origin, with no path, query, or fragment. Build again after changing this value.
+2. Keep `SITE_URL=https://aldomarcelino.com` in Production, or leave it unset to use that default. Build again after changing this value.
 3. Optionally set `GOOGLE_SITE_VERIFICATION` to a real Search Console HTML verification value. No verification code is fabricated.
 4. Deploy, verify the domain in Google Search Console, and submit `/sitemap.xml`.
 5. Check the deployed URL with Search Console URL Inspection, Google's Rich Results Test, and PageSpeed Insights. Review actual mobile Core Web Vitals once field data is available.
@@ -57,6 +59,8 @@ When a final domain is ready:
 Only the homepage is included in the sitemap: `#projects`, `#about`, and other sections are fragments of the same page. No fictitious modification dates, ratings, or achievements are added to schema. Unique project case-study pages with authentic screenshots, technical decisions, and outcomes are the next content improvement when that material is available.
 
 References: [Google title guidance](https://developers.google.com/search/docs/appearance/title-link), [profile structured data](https://developers.google.com/search/docs/appearance/structured-data/profile-page), [sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap). These changes improve technical readiness; they do not guarantee rankings or a specific audit score.
+
+See [the domain launch checklist](docs/seo-launch.md) for Search Console verification, indexing, and profile links after deployment.
 
 ## Checks
 
@@ -72,7 +76,7 @@ npm run build
 2. Select Next.js and Node.js **24.x**. `vercel.json` configures `npm ci` and `npm run build`; keep the output directory default.
 3. Use `main` as the production branch. Production and Preview environments must remain separate.
 4. Deploy to the provided `vercel.app` address. No database, secrets, or custom domain are required.
-5. If attaching a custom domain, optionally set `SITE_URL` in Production to its HTTPS origin and redeploy. Leave this override unset in Preview.
+5. Use `aldomarcelino.com` as the primary domain. Set `www.aldomarcelino.com` and the old production `vercel.app` domain to redirect to it through Vercel Domains. Keep `SITE_URL` unset or equal to `https://aldomarcelino.com` and redeploy.
 6. Check `/`, `/Aldo-Marcelino-CV.pdf`, `/social-image`, `/robots.txt`, and `/sitemap.xml`. Confirm preview HTML contains `noindex` and production canonical points to the production domain.
 
 Next.js/React were updated for production preparation. `npm audit` checks the installed dependency tree. Review actual contact details and dates before publishing; project cover concepts remain explicitly identified.

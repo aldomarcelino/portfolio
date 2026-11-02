@@ -224,7 +224,7 @@ export default function Home() {
               And how they feel to use.
             </p>
             <p>
-              I’m a full-stack software engineer based in Jakarta, with experience
+              I’m {profile.fullName}, a full-stack software engineer based in Jakarta, with experience
               building SaaS platforms, business applications, and cloud service
               interfaces. My work connects user interfaces, backend services, and
               the integrations that keep products running.
