@@ -35,7 +35,7 @@ export function HeroHeadline() {
 
   return (
     <div className="hero-headline entrance delay-one" ref={container}>
-      <h1 className="hero-identity">{profile.name} — Full Stack Engineer</h1>
+      <h1 className="hero-identity">{profile.name} - Full Stack Engineer</h1>
       <div className="rotating-headline" aria-hidden="true">
         {headlines.map((headline, index) => (
           <span

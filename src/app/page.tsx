@@ -51,8 +51,7 @@ export default function Home() {
             <div className="hero-copy">
               <HeroHeadline />
               <p className="hero-lead entrance delay-two">
-                I’m Aldo Marcelino, a full-stack software engineer turning
-                complex problems into software that feels simple.
+                I turn complex problems into software that feels simple.
               </p>
               <p className="hero-description entrance delay-two">
                 {profile.summary}
@@ -224,7 +223,7 @@ export default function Home() {
               And how they feel to use.
             </p>
             <p>
-              I’m {profile.fullName}, a full-stack software engineer based in Jakarta, with experience
+              I’m {profile.fullName}, a software engineer based in Jakarta, with experience
               building SaaS platforms, business applications, and cloud service
               interfaces. My work connects user interfaces, backend services, and
               the integrations that keep products running.
