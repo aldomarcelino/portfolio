@@ -4,7 +4,7 @@ export const experiences: Experience[] = [
   {
     company: "L’tria Tribe Benefits",
     role: "Full-Stack Engineer · Full-time",
-    period: "6 Jan 2025 — Present",
+    period: "6 Jan 2025 - Present",
     location: "Singapore · Remote",
     description:
       "Building and maintaining two employee benefits products, Tribe Benefits and NOVA by Tribe, for employers and their teams in Singapore.",
@@ -25,7 +25,7 @@ export const experiences: Experience[] = [
   {
     company: "CIMB Niaga",
     role: "Front-End Engineer · Contract",
-    period: "4 Dec 2023 — 31 Dec 2024",
+    period: "4 Dec 2023 - 31 Dec 2024",
     location: "Jakarta, Indonesia",
     description:
       "Developed frontend experiences across three banking products, including CIMB Niaga’s public API portal for businesses integrating banking services into their platforms.",
@@ -44,7 +44,7 @@ export const experiences: Experience[] = [
   {
     company: "Eranyacloud",
     role: "Front-End Engineer · Full-time",
-    period: "5 Jan 2023 — 30 Nov 2023",
+    period: "5 Jan 2023 - 30 Nov 2023",
     location: "Jakarta, Indonesia",
     description:
       "Developed frontend applications for two products at an Indonesian cloud services provider, supporting its cloud infrastructure and enterprise services business.",
@@ -63,7 +63,7 @@ export const experiences: Experience[] = [
   {
     company: "Ekuid",
     role: "Full-Stack Engineer · Part-time",
-    period: "12 Dec 2022 — 30 Jun 2026",
+    period: "12 Dec 2022 - 30 Jun 2026",
     location: "Jakarta, Indonesia",
     description:
       "Contributed to EKUID, a securities crowdfunding platform connecting businesses and investors, and Wukong, an event ticketing platform.",

@@ -84,7 +84,7 @@ export function SystemVisual() {
                 </ul>
               </div>
               <div className={styles.stub}>
-                <div className={styles.stubCopy}><span>{layer.detail}</span><b>AL1 — 00{index + 1}</b></div>
+                <div className={styles.stubCopy}><span>{layer.detail}</span><b>AL1 - 00{index + 1}</b></div>
                 <span className={styles.barcode} aria-hidden="true" />
               </div>
             </article>

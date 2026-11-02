@@ -86,7 +86,7 @@ export default function Home() {
             <span>
               FRONTEND PRECISION <b>×</b> BACKEND THINKING
             </span>
-            <span className="micro">PORTFOLIO — 2026</span>
+            <span className="micro">PORTFOLIO - 2026</span>
           </div>
         </section>
         <section

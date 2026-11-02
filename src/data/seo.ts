@@ -5,5 +5,5 @@ export const seo = {
   role: "Full Stack Software Engineer",
   imagePath: "/social-image",
   imageAlt:
-    "Aldo Marcelino — Full Stack Software Engineer. Thoughtful interfaces, connected systems, and maintainable software.",
+    "Aldo Marcelino - Full Stack Software Engineer. Thoughtful interfaces, connected systems, and maintainable software.",
 };
