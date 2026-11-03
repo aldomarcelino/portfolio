@@ -1,5 +1,4 @@
-export const developerToolsUrl =
-  "https://al1-developer-tools.aldomarcelino.workers.dev/";
+export const developerToolsUrl = "https://ramupod.com/";
 
 // A focused selection of top flagship tools from Ramupod.
 export const featuredTools = [
